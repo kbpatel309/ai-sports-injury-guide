@@ -17,25 +17,37 @@ export default function Home() {
 
   const [message, setMessage] = useState('')
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const sendMessage = async () => {
     const newMessages: Message[] = [...messages, { role: "user", content: message }]
     setMessages(newMessages)
     setMessage('')
 
-    const response = await fetch('/api/chat', {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newMessages)
-    })
+    setIsLoading(true)
 
-    if (!response.ok) {
-      const errorMessage: Message = await response.json()
-      setMessages((messages) => [...messages, errorMessage])
-      return
+
+    try { 
+      const response = await fetch('/api/chat', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMessages)
+      })
+
+      if (!response.ok) {
+        const errorMessage: Message = await response.json()
+        setMessages((messages) => [...messages, errorMessage])
+        return
+      }
+
+      const assistantMessage: Message = await response.json()
+      setMessages((messages) => [...messages, assistantMessage])
+
+    } finally {
+
+        setIsLoading(false)
+
     }
-
-    const assistantMessage: Message = await response.json()
-    setMessages((messages) => [...messages, assistantMessage])
   }
 
   return (
@@ -54,6 +66,13 @@ export default function Home() {
               </Box>
             </Box>
           ))}
+          {isLoading && (
+            <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+              <Box sx={{ bgcolor: "primary.main", color: "white", borderRadius: 16, p: 3 }}>
+                Thinking...
+              </Box>
+            </Box>
+          )}
         </Stack>
         <Stack direction="row" spacing={2}>
           <TextField
