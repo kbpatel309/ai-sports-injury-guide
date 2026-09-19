@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <Box sx={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-      <Stack sx={{ width: "500px", height: "700px", border: "1px solid black", p: 2 }} spacing={3}>
+      <Stack sx={{ width: "90%", maxWidth: "700px", height: "700px", border: "1px solid black", p: 2 }} spacing={3}>
         <Stack sx={{ flexGrow: 1, overflow: "auto", maxHeight: "100%" }} spacing={2}>
           {messages.map((msg, index) => (
             <Box key={index} sx={{ display: "flex", justifyContent: msg.role === "assistant" ? "flex-start" : "flex-end" }}>
