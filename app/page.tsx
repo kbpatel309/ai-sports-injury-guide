@@ -11,7 +11,7 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm the AI Lifting Injury Guide. How can I help you today?"
+      content: "Hi! I'm the AI Sports Injury Guide. How can I help you today?"
     }
   ])
 
@@ -27,6 +27,12 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newMessages)
     })
+
+    if (!response.ok) {
+      const errorMessage: Message = await response.json()
+      setMessages((messages) => [...messages, errorMessage])
+      return
+    }
 
     const assistantMessage: Message = await response.json()
     setMessages((messages) => [...messages, assistantMessage])
