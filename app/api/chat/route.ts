@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     try {
         const openai = new OpenAI()
         const pc = new Pinecone({
-            apiKey: process.env.PINECONE_API_KEY
+            apiKey: process.env.PINECONE_API_KEY!
         })
         const index = pc.index(process.env.PINECONE_INDEX!).namespace('ns1')
 
@@ -37,9 +37,9 @@ export async function POST(req: Request) {
         results.matches.forEach((match) => {
             resultString+=`\n
             Injury: ${match.id}\n
-            Description: ${match.metadata.description}\n
-            Anatomy: ${match.metadata.anatomy}\n
-            Treatment: ${match.metadata.treatment}\n
+            Description: ${match.metadata!.description}\n
+            Anatomy: ${match.metadata!.anatomy}\n
+            Treatment: ${match.metadata!.treatment}\n
             \n\n
             `
     })
