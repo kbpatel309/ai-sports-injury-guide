@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Costochondritis",
+    "description": "Inflammation of the cartilage connecting the ribs to the sternum, often triggered by heavy bench pressing, chest flyes, or high-volume pressing work. Pain is usually sharp, localized, and worsens with pressing, deep breathing, or pressing on the chest. Important: chest pain can also indicate serious cardiac issues, so this should only be considered after cardiac causes have been ruled out by a doctor.",
+    "anatomy": "Costochondral joints (where ribs meet the sternum via cartilage).",
+    "treatment": "Rest from pressing movements, anti-inflammatory measures as advised by a doctor, gradual return to pressing once pain-free. Seek immediate medical attention for chest pain accompanied by shortness of breath, radiating arm pain, or dizziness, as these can indicate a cardiac emergency."
+  },
+  {
+    "name": "Rotator Cuff Tendinopathy",
+    "description": "Irritation or degeneration of the rotator cuff tendons, often caused by repetitive overhead pressing or excessive volume in shoulder exercises like bench press or overhead press. Common symptoms include a dull ache in the shoulder, weakness when lifting the arm, and pain that worsens with pressing movements.",
+    "anatomy": "Rotator cuff (supraspinatus, infraspinatus, teres minor, subscapularis) and surrounding shoulder tendons.",
+    "treatment": "Rest from aggravating movements, reduce pressing volume/intensity, rotator cuff strengthening (external rotations, band pull-aparts), gradual return to pressing. See a doctor or physical therapist if pain persists beyond a few weeks or is severe."
+  },
+  {
+    "name": "Low Back Strain",
+    "description": "Muscular or ligamentous strain in the lower back, frequently caused by improper form, excessive load, or rounding the back during deadlifts or squats.",
+    "anatomy": "Lumbar paraspinal muscles, ligaments, and lower back fascia.",
+    "treatment": "Rest from loaded spinal flexion/extension, gentle mobility work, core stabilization exercises, gradual reintroduction of loaded movements with strict form. Seek medical attention if there's numbness, tingling, or leg weakness."
+  },
+  {
+    "name": "Patellofemoral Pain Syndrome",
+    "description": "Pain around or behind the kneecap, common in lifters who squat or lunge frequently, often related to tracking issues or quad/hip strength imbalances.",
+    "anatomy": "Patellofemoral joint, quadriceps tendon, and surrounding knee structures.",
+    "treatment": "Reduce deep knee flexion volume temporarily, strengthen quads and hips (especially glute medius), improve squat depth/form gradually. See a doctor if swelling or instability occurs."
+  }
+]
