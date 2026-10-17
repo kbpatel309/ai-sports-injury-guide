@@ -14,9 +14,16 @@ export async function POST(req: Request) {
     const data = await req.json()
 
     try {
+        if (!process.env.PINECONE_API_KEY) {
+            throw new Error('Missing Pinecone API key')
+        }
+        if (!process.env.PINECONE_INDEX) {
+            throw new Error('Missing Pinecone index name')
+        }
+
         const openai = new OpenAI()
         const pc = new Pinecone({
-            apiKey: process.env.PINECONE_API_KEY!
+            apiKey: process.env.PINECONE_API_KEY
         })
         const index = pc.index(process.env.PINECONE_INDEX!).namespace('ns1')
 
@@ -35,14 +42,16 @@ export async function POST(req: Request) {
 
         let resultString = '\n\nReturned results from vector db (done automatically):'
         results.matches.forEach((match) => {
+            if(!match.metadata) {
+                return;
+            }
             resultString+=`\n
             Injury: ${match.id}\n
-            Description: ${match.metadata!.description}\n
-            Anatomy: ${match.metadata!.anatomy}\n
-            Treatment: ${match.metadata!.treatment}\n
-            \n\n
-            `
-    })
+            Description: ${match.metadata.description}\n
+            Anatomy: ${match.metadata.anatomy}\n
+            Treatment: ${match.metadata.treatment}\n
+            \n\n    `
+        })
 
         /*
         const completion = await openai.chat.completions.create({
